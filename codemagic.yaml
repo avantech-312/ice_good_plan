@@ -1,0 +1,47 @@
+workflows:
+  name-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    integrations:
+      app_store_connect: jdajkriNNuei949kkm3s4
+    environment:
+      groups:
+        - app_vars
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: dmitru.klean.com
+      vars:
+        APP_ID: 6759394139
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Install pods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
+        ignore_failure: true
+      - name: Flutter build ipa and automatic versioning
+        script: |
+          # See the following link about getting the latest App Store or TestFlight version - https://docs.codemagic.io/knowledge-codemagic/build-versioning/#app-store-or-testflight-latest-build-number
+          flutter build ipa --release \
+            --build-name=3.2.3 \
+            --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_ID") + 1)) \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
+    publishing:
+      app_store_connect:
+        auth: integration
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
