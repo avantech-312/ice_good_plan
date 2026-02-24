@@ -1,4 +1,12 @@
 PODS:
+  - appsflyer_sdk (6.17.8):
+    - appsflyer_sdk/Core (= 6.17.8)
+  - appsflyer_sdk/Core (6.17.8):
+    - AppsFlyerFramework (= 6.17.8)
+    - Flutter
+  - AppsFlyerFramework (6.17.8):
+    - AppsFlyerFramework/Main (= 6.17.8)
+  - AppsFlyerFramework/Main (6.17.8)
   - Flutter (1.0.0)
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -31,18 +39,26 @@ PODS:
     - sqlite3/perf-threadsafe
     - sqlite3/rtree
     - sqlite3/session
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
+  - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - Flutter (from `Flutter`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqlite3_flutter_libs (from `.symlinks/plugins/sqlite3_flutter_libs/darwin`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
 
 SPEC REPOS:
   trunk:
+    - AppsFlyerFramework
     - sqlite3
 
 EXTERNAL SOURCES:
+  appsflyer_sdk:
+    :path: ".symlinks/plugins/appsflyer_sdk/ios"
   Flutter:
     :path: Flutter
   path_provider_foundation:
@@ -51,13 +67,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqlite3_flutter_libs:
     :path: ".symlinks/plugins/sqlite3_flutter_libs/darwin"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
+  appsflyer_sdk: 219a6c5cb0343de60c7f259ecdb202084274359e
+  AppsFlyerFramework: 63577b60d6b9fcdab60135289979e7d1c9ec79b9
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   sqlite3: 8d708bc63e9f4ce48f0ad9d6269e478c5ced1d9b
   sqlite3_flutter_libs: d13b8b3003f18f596e542bcb9482d105577eff41
+  webview_flutter_wkwebview: 8ebf4fded22593026f7dbff1fbff31ea98573c8d
 
 PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
 
